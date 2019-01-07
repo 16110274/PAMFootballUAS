@@ -211,6 +211,7 @@ public class UserInterface extends AppCompatActivity implements SportAdapter.OnI
     public void onBackPressed() {
         if (mSortBy.equals(UserInterface.FetchSport.FAVORITES)) {
             getSupportLoaderManager().destroyLoader(FAVORITE_MOVIES_LOADER);
+            viewPager.setCurrentItem(0);
         }
         mSortBy = UserInterface.FetchSport.PREMIERELEAGUE;
         refreshList(mSortBy);
