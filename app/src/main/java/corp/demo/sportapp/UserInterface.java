@@ -204,6 +204,7 @@ public class UserInterface extends AppCompatActivity implements SportAdapter.OnI
                 dialog.show();
             }
         }
+        viewPager.setCurrentItem(1);
     }
 
     @Override
