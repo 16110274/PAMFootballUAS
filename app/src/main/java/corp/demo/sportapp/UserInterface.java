@@ -3,10 +3,12 @@ package corp.demo.sportapp;
 import android.content.Intent;
 import android.database.Cursor;
 import android.os.AsyncTask;
+import android.os.Build;
 import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.LoaderManager;
+import android.support.v4.content.ContextCompat;
 import android.support.v4.content.CursorLoader;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.view.ViewPager;
@@ -58,18 +60,23 @@ public class UserInterface extends AppCompatActivity implements SportAdapter.OnI
     @BindView(R.id.indeterminateBar)
     ProgressBar mProgressBar;
 
-    String popularMoviesURL;
-    String topRatedMoviesURL;
-    String nowPlayingMoviesURL;
+    String premiereTeamURL;
+    String laligaTeamURL;
+    String serieaTeamURL;
+    String bundesligaTeamURL;
+    String ligueoneTeamURL;
 
-    ArrayList<Sport> mPopularList;
-    ArrayList<Sport> mTopTopRatedList;
-    ArrayList<Sport> mNowPlayingList;
+
+    ArrayList<Sport> mPremiereList;
+    ArrayList<Sport> mLaligaList;
+    ArrayList<Sport> mSerieaList;
+    ArrayList<Sport> mBundesligaList;
+    ArrayList<Sport> mLigueone;
 
 
     private SportAdapter mAdapter;
     private SportAdapter mAdapterFavorite;
-    private String mSortBy = UserInterface.FetchSport.POPULAR;
+    private String mSortBy = UserInterface.FetchSport.PREMIERELEAGUE;
 
     private static final String EXTRA_MOVIES = "EXTRA_MOVIES";
     private static final String EXTRA_SORT_BY = "EXTRA_SORT_BY";
@@ -120,14 +127,14 @@ public class UserInterface extends AppCompatActivity implements SportAdapter.OnI
                         if (mSortBy.equals(Dashboard.FetchSport.FAVORITES)) {
                             getSupportLoaderManager().destroyLoader(FAVORITE_MOVIES_LOADER);
                         }
-                        mSortBy = FetchSport.POPULAR;
+                        mSortBy = FetchSport.PREMIERELEAGUE;
                         refreshList(mSortBy);
                         return true;
                     case R.id.nav_upcoming:
                         if (mSortBy.equals(Dashboard.FetchSport.FAVORITES)) {
                             getSupportLoaderManager().destroyLoader(FAVORITE_MOVIES_LOADER);
                         }
-                        mSortBy = FetchSport.NOW_PLAYING;
+                        mSortBy = FetchSport.SERIEA;
                         refreshList(mSortBy);
                         return true;
 
@@ -209,7 +216,7 @@ public class UserInterface extends AppCompatActivity implements SportAdapter.OnI
         if (mSortBy.equals(UserInterface.FetchSport.FAVORITES)) {
             getSupportLoaderManager().destroyLoader(FAVORITE_MOVIES_LOADER);
         }
-        mSortBy = UserInterface.FetchSport.POPULAR;
+        mSortBy = UserInterface.FetchSport.PREMIERELEAGUE;
         refreshList(mSortBy);
     }
 
@@ -245,17 +252,24 @@ public class UserInterface extends AppCompatActivity implements SportAdapter.OnI
         inflater.inflate(R.menu.dashboard, menu);
 
         switch (mSortBy) {
-            case UserInterface.FetchSport.POPULAR:
-                menu.findItem(R.id.sort_by_popular).setChecked(true);
+            case UserInterface.FetchSport.PREMIERELEAGUE:
+                menu.findItem(R.id.sort_premiere).setChecked(true);
                 break;
-            case UserInterface.FetchSport.TOP_RATED:
-                menu.findItem(R.id.sort_by_top_rated).setChecked(true);
+            case UserInterface.FetchSport.LALIGA:
+                menu.findItem(R.id.sort_laliga).setChecked(true);
                 break;
             case UserInterface.FetchSport.FAVORITES:
                 menu.findItem(R.id.sort_by_favorites).setChecked(true);
                 break;
-            case UserInterface.FetchSport.NOW_PLAYING:
-                menu.findItem(R.id.sort_by_now_playing).setChecked(true);
+            case UserInterface.FetchSport.SERIEA:
+                menu.findItem(R.id.sort_seriea).setChecked(true);
+                break;
+            case FetchSport.BUNDESLIGA:
+                menu.findItem(R.id.sort_bundesliga).setChecked(true);
+                break;
+            case FetchSport.LIGUEONE:
+                menu.findItem(R.id.sort_ligueone).setChecked(true);
+                break;
         }
         return true;
     }
@@ -263,19 +277,19 @@ public class UserInterface extends AppCompatActivity implements SportAdapter.OnI
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
-            case R.id.sort_by_top_rated:
+            case R.id.sort_premiere:
                 if (mSortBy.equals(UserInterface.FetchSport.FAVORITES)) {
                     getSupportLoaderManager().destroyLoader(FAVORITE_MOVIES_LOADER);
                 }
-                mSortBy = UserInterface.FetchSport.TOP_RATED;
+                mSortBy = FetchSport.PREMIERELEAGUE;
                 refreshList(mSortBy);
                 item.setChecked(true);
                 break;
-            case R.id.sort_by_popular:
+            case R.id.sort_laliga:
                 if (mSortBy.equals(UserInterface.FetchSport.FAVORITES)) {
                     getSupportLoaderManager().destroyLoader(FAVORITE_MOVIES_LOADER);
                 }
-                mSortBy = UserInterface.FetchSport.POPULAR;
+                mSortBy = FetchSport.LALIGA;
                 refreshList(mSortBy);
                 item.setChecked(true);
                 break;
@@ -283,12 +297,26 @@ public class UserInterface extends AppCompatActivity implements SportAdapter.OnI
                 mSortBy = UserInterface.FetchSport.FAVORITES;
                 item.setChecked(true);
                 refreshList(mSortBy);
-            default:
                 break;
-            case R.id.sort_by_now_playing:
-                mSortBy = UserInterface.FetchSport.NOW_PLAYING;
+            case R.id.sort_seriea:
+                mSortBy = UserInterface.FetchSport.SERIEA;
                 item.setChecked(true);
                 refreshList(mSortBy);
+                break;
+            case R.id.sort_bundesliga:
+                mSortBy = FetchSport.BUNDESLIGA;
+                item.setChecked(true);
+                refreshList(mSortBy);
+                break;
+            case R.id.sort_ligueone:
+                mSortBy = FetchSport.LIGUEONE;
+                item.setChecked(true);
+                refreshList(mSortBy);
+                break;
+
+
+            default: break;
+
         }
         return super.onOptionsItemSelected(item);
     }
@@ -296,22 +324,32 @@ public class UserInterface extends AppCompatActivity implements SportAdapter.OnI
     private void refreshList(String sort_by) {
 
         switch (sort_by){
-            case UserInterface.FetchSport.POPULAR:
+            case UserInterface.FetchSport.PREMIERELEAGUE:
                 mAdapter = new SportAdapter(new ArrayList<Sport>(),this);
-                mAdapter.add(mPopularList);
+                mAdapter.add(mPremiereList);
                 movie_grid_recyclerView.setAdapter(mAdapter);
                 break;
-            case UserInterface.FetchSport.TOP_RATED:
+            case UserInterface.FetchSport.LALIGA:
                 mAdapter = new SportAdapter(new ArrayList<Sport>(),this);
-                mAdapter.add(mTopTopRatedList);
+                mAdapter.add(mLaligaList);
                 movie_grid_recyclerView.setAdapter(mAdapter);
                 break;
             case UserInterface.FetchSport.FAVORITES:
                 getSupportLoaderManager().initLoader(FAVORITE_MOVIES_LOADER, null, this);
                 break;
-            case UserInterface.FetchSport.NOW_PLAYING:
+            case UserInterface.FetchSport.SERIEA:
                 mAdapter = new SportAdapter(new ArrayList<Sport>(), this);
-                mAdapter.add(mNowPlayingList);
+                mAdapter.add(mSerieaList);
+                movie_grid_recyclerView.setAdapter(mAdapter);
+                break;
+            case FetchSport.BUNDESLIGA:
+                mAdapter = new SportAdapter(new ArrayList<Sport>(), this);
+                mAdapter.add(mBundesligaList);
+                movie_grid_recyclerView.setAdapter(mAdapter);
+                break;
+            case FetchSport.LIGUEONE:
+                mAdapter = new SportAdapter(new ArrayList<Sport>(), this);
+                mAdapter.add(mLigueone);
                 movie_grid_recyclerView.setAdapter(mAdapter);
                 break;
         }
@@ -356,6 +394,52 @@ public class UserInterface extends AppCompatActivity implements SportAdapter.OnI
     @Override
     public void onTabSelected(TabLayout.Tab tab) {
 
+        viewPager.setCurrentItem(tab.getPosition());
+        if (tab.getPosition() == 0) {
+            toolbar.setBackgroundColor(ContextCompat.getColor(UserInterface.this,
+                    R.color.colorPrimary));
+            tabLayout.setBackgroundColor(ContextCompat.getColor(UserInterface.this,
+                    R.color.colorPrimary));
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+                getWindow().setStatusBarColor(ContextCompat.getColor(UserInterface.this,
+                        R.color.colorPrimary));
+
+                    if (mSortBy.equals(Dashboard.FetchSport.FAVORITES)) {
+                        getSupportLoaderManager().destroyLoader(FAVORITE_MOVIES_LOADER);
+                    }
+                    mSortBy = FetchSport.PREMIERELEAGUE;
+                    refreshList(mSortBy);
+            }
+        } else if (tab.getPosition() == 1) {
+            toolbar.setBackgroundColor(ContextCompat.getColor(UserInterface.this,
+                    android.R.color.holo_purple));
+            tabLayout.setBackgroundColor(ContextCompat.getColor(UserInterface.this,
+                    android.R.color.holo_purple));
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+                getWindow().setStatusBarColor(ContextCompat.getColor(UserInterface.this,
+                        android.R.color.holo_purple));
+
+                if (mSortBy.equals(Dashboard.FetchSport.FAVORITES)) {
+                    getSupportLoaderManager().destroyLoader(FAVORITE_MOVIES_LOADER);
+                }
+                mSortBy = FetchSport.PREMIERELEAGUE;
+                refreshList(mSortBy);
+
+            }
+        } else {
+            toolbar.setBackgroundColor(ContextCompat.getColor(UserInterface.this,
+                    R.color.colorAccent));
+            tabLayout.setBackgroundColor(ContextCompat.getColor(UserInterface.this,
+                    R.color.colorAccent));
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+                getWindow().setStatusBarColor(ContextCompat.getColor(UserInterface.this,
+                        R.color.colorAccent));
+                mSortBy = FetchSport.FAVORITES;
+                refreshList(mSortBy);
+
+
+            }
+        }
     }
 
     @Override
@@ -376,16 +460,19 @@ public class UserInterface extends AppCompatActivity implements SportAdapter.OnI
         tabLayout.getTabAt(0).setText(R.string.label_now_playing);
         tabLayout.getTabAt(1).setText(R.string.label_upcoming);
         tabLayout.getTabAt(2).setText(R.string.label_favorite);
-        tabLayout.setOnTabSelectedListener(this);
+        tabLayout.addOnTabSelectedListener(this);
     }
 
     //AsyncTask
     public class FetchSport extends AsyncTask<Void,Void,Void> {
 
-        public final static String POPULAR = "popular";
-        public final static String TOP_RATED = "top_rated";
+        public final static String PREMIERELEAGUE = "premiere";
+        public final static String LALIGA = "laliga";
         public final static String FAVORITES = "favorites";
-        public final static String NOW_PLAYING = "now_playing";
+        public final static String SERIEA = "seria";
+        public final static String BUNDESLIGA = "bundesliga";
+        public final static String LIGUEONE = "ligueone";
+
 
         @Override
         protected void onPreExecute() {
@@ -397,20 +484,25 @@ public class UserInterface extends AppCompatActivity implements SportAdapter.OnI
         @Override
         protected Void doInBackground(Void... voids) {
 
-            popularMoviesURL = "https://www.thesportsdb.com/api/v1/json/1/search_all_teams.php?l=English%20Premier%20League";
-            topRatedMoviesURL = "https://www.thesportsdb.com/api/v1/json/1/search_all_teams.php?l=Spanish%20La%20Liga";
-            nowPlayingMoviesURL = "https://www.thesportsdb.com/api/v1/json/1/search_all_teams.php?l=Italian%20Serie%20A";
+            premiereTeamURL = "https://www.thesportsdb.com/api/v1/json/1/search_all_teams.php?l=English%20Premier%20League";
+            laligaTeamURL = "https://www.thesportsdb.com/api/v1/json/1/search_all_teams.php?l=Spanish%20La%20Liga";
+            serieaTeamURL = "https://www.thesportsdb.com/api/v1/json/1/search_all_teams.php?l=Italian%20Serie%20A";
+            bundesligaTeamURL = "https://www.thesportsdb.com/api/v1/json/1/search_all_teams.php?l=German%20Bundesliga";
+            ligueoneTeamURL = "https://www.thesportsdb.com/api/v1/json/1/search_all_teams.php?l=French%20Ligue%201";
 
 
-
-            mPopularList = new ArrayList<>();
-            mTopTopRatedList = new ArrayList<>();
-            mNowPlayingList = new ArrayList<>();
+            mPremiereList = new ArrayList<>();
+            mLaligaList = new ArrayList<>();
+            mSerieaList = new ArrayList<>();
+            mBundesligaList = new ArrayList<>();
+            mLigueone = new ArrayList<>();
             try {
                 if(NetworkUtils.networkStatus(UserInterface.this)){
-                    mPopularList = NetworkUtils.fetchData(popularMoviesURL); //Get popular movies
-                    mTopTopRatedList = NetworkUtils.fetchData(topRatedMoviesURL); //Get top rated movies
-                    mNowPlayingList = NetworkUtils.fetchData(nowPlayingMoviesURL); //Get now playing movies
+                    mPremiereList = NetworkUtils.fetchData(premiereTeamURL); //Get premiere movies
+                    mLaligaList = NetworkUtils.fetchData(laligaTeamURL); //Get top rated movies
+                    mSerieaList = NetworkUtils.fetchData(serieaTeamURL); //Get now playing movies
+                    mBundesligaList = NetworkUtils.fetchData(bundesligaTeamURL); //Get now playing movies
+                    mLigueone = NetworkUtils.fetchData(ligueoneTeamURL); //Get now playing movies
 
                 }else{
                     AlertDialog.Builder dialog = new AlertDialog.Builder(UserInterface.this);
@@ -429,9 +521,9 @@ public class UserInterface extends AppCompatActivity implements SportAdapter.OnI
         protected void onPostExecute(Void  s) {
             super.onPostExecute(s);
             mProgressBar.setVisibility(View.INVISIBLE);
-            //Load popular movies by default
+            //Load premiere movies by default
             mAdapter = new SportAdapter(new ArrayList<Sport>(),UserInterface.this);
-            mAdapter.add(mPopularList);
+            mAdapter.add(mPremiereList);
             movie_grid_recyclerView.setAdapter(mAdapter);
         }
     }

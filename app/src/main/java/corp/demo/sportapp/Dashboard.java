@@ -152,16 +152,16 @@ public class Dashboard extends AppCompatActivity implements SportAdapter.OnItemC
 
         switch (mSortBy) {
             case FetchSport.POPULAR:
-                menu.findItem(R.id.sort_by_popular).setChecked(true);
+                menu.findItem(R.id.sort_premiere).setChecked(true);
                 break;
             case FetchSport.TOP_RATED:
-                menu.findItem(R.id.sort_by_top_rated).setChecked(true);
+                menu.findItem(R.id.sort_laliga).setChecked(true);
                 break;
             case FetchSport.FAVORITES:
                 menu.findItem(R.id.sort_by_favorites).setChecked(true);
                 break;
             case FetchSport.NOW_PLAYING:
-                menu.findItem(R.id.sort_by_now_playing).setChecked(true);
+                menu.findItem(R.id.sort_seriea).setChecked(true);
         }
         return true;
     }
@@ -169,7 +169,7 @@ public class Dashboard extends AppCompatActivity implements SportAdapter.OnItemC
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
-            case R.id.sort_by_top_rated:
+            case R.id.sort_laliga:
                 if (mSortBy.equals(FetchSport.FAVORITES)) {
                     getSupportLoaderManager().destroyLoader(FAVORITE_MOVIES_LOADER);
                 }
@@ -177,7 +177,7 @@ public class Dashboard extends AppCompatActivity implements SportAdapter.OnItemC
                 refreshList(mSortBy);
                 item.setChecked(true);
                 break;
-            case R.id.sort_by_popular:
+            case R.id.sort_premiere:
                 if (mSortBy.equals(FetchSport.FAVORITES)) {
                     getSupportLoaderManager().destroyLoader(FAVORITE_MOVIES_LOADER);
                 }
@@ -191,7 +191,7 @@ public class Dashboard extends AppCompatActivity implements SportAdapter.OnItemC
                 refreshList(mSortBy);
             default:
                 break;
-            case R.id.sort_by_now_playing:
+            case R.id.sort_seriea:
                 mSortBy = FetchSport.NOW_PLAYING;
                 item.setChecked(true);
                 refreshList(mSortBy);

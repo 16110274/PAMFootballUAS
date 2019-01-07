@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 	<dimen name="movie_grid_title_padding">16dp</dimen>
-	<integer name="number_of_grid_columns">1</integer>
+	<integer name="number_of_grid_columns">3</integer>
 	<string name="poster_url" translatable="false">http://image.tmdb.org/t/p/w342</string>
 
     <dimen name="app_bar_height">200dp</dimen>

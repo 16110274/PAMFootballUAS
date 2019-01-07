@@ -85,7 +85,7 @@ public class SportAdapter extends RecyclerView.Adapter<SportAdapter.MovieViewHol
         }
 
         Picasso.get()
-                .load(sport.getTeam_stadium())
+                .load(sport.getTeam_badge())
                 .config(Bitmap.Config.RGB_565)
                 .placeholder(R.drawable.image_placeholder)
                 .into(holder.mMovieThumbnail,

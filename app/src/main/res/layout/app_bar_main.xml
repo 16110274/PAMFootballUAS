@@ -31,7 +31,7 @@
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
             android:layout_below="@id/toolbar"
-            android:background="?attr/colorAccent"
+            android:background="?attr/colorPrimary"
             app:tabGravity="fill"
             app:tabMaxWidth="0dp" />
 
@@ -62,6 +62,7 @@
 
 
     <android.support.v7.widget.RecyclerView
+        android:layout_marginTop="90dp"
         xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
         android:id="@+id/recycled_movie_grid"

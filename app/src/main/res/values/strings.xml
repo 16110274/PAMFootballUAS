@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">SportApp</string>
+    <string name="app_name">Footballsque</string>
     <string name="description">SportApp</string>
     <string name="title_network_alert">Network Error</string>
     <string name="message_network_alert">Make sure you are connected to Internet</string>
@@ -21,7 +21,7 @@
     <string name="sort_by">Sort by</string>
     <string name="now_playing">Now Playing</string>
     <string name="action_search">Search</string>
-    <string name="label_now_playing">Now Playing</string>
+    <string name="label_now_playing">Teams</string>
     <string name="label_upcoming">Upcoming</string>
     <string name="label_favorite">Favorite</string>
     <string name="label_share">Share</string>

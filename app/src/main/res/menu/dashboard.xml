@@ -10,15 +10,21 @@
                 android:id="@+id/menu_sort_by"
                 android:checkableBehavior="single">
                 <item
-                    android:id="@+id/sort_by_popular"
+                    android:id="@+id/sort_premiere"
                     android:checked="true"
                     android:title="Premiere League" />
                 <item
-                    android:id="@+id/sort_by_top_rated"
+                    android:id="@+id/sort_laliga"
                     android:title="La Liga" />
                 <item
-                    android:id="@+id/sort_by_now_playing"
-                    android:title="@string/now_playing" />
+                    android:id="@+id/sort_seriea"
+                    android:title="Serie A" />
+                <item
+                    android:id="@+id/sort_bundesliga"
+                    android:title="Bundesliga" />
+                <item
+                    android:id="@+id/sort_ligueone"
+                    android:title="Ligue 1" />
                 <item
                     android:id="@+id/sort_by_favorites"
                     android:title="@string/favorites" />
