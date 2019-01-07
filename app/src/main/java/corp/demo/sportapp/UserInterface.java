@@ -26,6 +26,7 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ProgressBar;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import java.io.IOException;
@@ -34,6 +35,7 @@ import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import corp.demo.sportapp.Activity.LoginActivity;
 import corp.demo.sportapp.SportDetails.SportDetailActivity;
 import corp.demo.sportapp.SportDetails.SportDetailFragment;
 import corp.demo.sportapp.databaseSQLITE.SportContract;
@@ -73,6 +75,7 @@ public class UserInterface extends AppCompatActivity implements SportAdapter.OnI
     ArrayList<Sport> mBundesligaList;
     ArrayList<Sport> mLigueone;
 
+    SharedPrefManager sharedPrefManager;
 
     private SportAdapter mAdapter;
     private SportAdapter mAdapterFavorite;
@@ -85,6 +88,8 @@ public class UserInterface extends AppCompatActivity implements SportAdapter.OnI
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user_interface);
         ButterKnife.bind(this);
+        sharedPrefManager = new SharedPrefManager(this);
+
         mProgressBar.setVisibility(View.INVISIBLE); //Hide Progressbar by Default
         //Dealing with View Model
         setupTab();
@@ -102,6 +107,12 @@ public class UserInterface extends AppCompatActivity implements SportAdapter.OnI
         // Menginisiasi  NavigationView
         navigationView = (NavigationView) findViewById(R.id.nav_view);
         //Mengatur Navigasi View Item yang akan dipanggil untuk menangani item klik menu navigasi
+        View headerView = navigationView.getHeaderView(0);
+        TextView navUsername = (TextView) headerView.findViewById(R.id.tvHeaderNama);
+        navUsername.setText(sharedPrefManager.getSPNama());
+
+        TextView navEmail = (TextView) headerView.findViewById(R.id.tvHeaderEmail);
+        navEmail.setText(sharedPrefManager.getSPEmail());
 
 
         navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
@@ -124,11 +135,10 @@ public class UserInterface extends AppCompatActivity implements SportAdapter.OnI
                     //dengan intent activity
 
                     case R.id.nav_exit:
-                        if (mSortBy.equals(Dashboard.FetchSport.FAVORITES)) {
-                            getSupportLoaderManager().destroyLoader(FAVORITE_MOVIES_LOADER);
-                        }
-                        mSortBy = FetchSport.FAVORITES;;
-                        refreshList(mSortBy);
+                        sharedPrefManager.saveSPBoolean(SharedPrefManager.SP_SUDAH_LOGIN, false);
+                        startActivity(new Intent(UserInterface.this, LoginActivity.class)
+                                .addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK));
+                        finish();
                         return true;
 
                     default:

@@ -9,33 +9,24 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
 
+import corp.demo.sportapp.Activity.LoginActivity;
+
 public class MainActivity extends AppCompatActivity {
-Button baru, old;
+    private static int SPLASH_TIME_OUT = 3000;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        baru = (Button) findViewById(R.id.button_gofragment);
-        old = (Button) findViewById(R.id.button_dashboard);
-        baru.setOnClickListener(new View.OnClickListener() {
+
+        new Handler().postDelayed(new Runnable() {
             @Override
-            public void onClick(View v) {
-                startActivity(new Intent(MainActivity.this, UserInterface.class));
+            public void run() {
+                Intent dashIntent = new Intent(MainActivity.this, LoginActivity.class);
+                startActivity(dashIntent);
+                finish();
             }
-        });
-
-        old.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(MainActivity.this, Dashboard.class));
-
-            }
-        });
-
-
-
-
-
+        }, SPLASH_TIME_OUT);
     }
 }

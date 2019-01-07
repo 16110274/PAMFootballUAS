@@ -1,27 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<android.support.constraint.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:orientation="vertical"
     android:layout_height="match_parent"
-    tools:context="corp.demo.sportapp.MainActivity">
+    android:background="#3498db"
+    tools:context=".MainActivity">
 
-    <Button
-        android:id="@+id/button_gofragment"
-        android:layout_width="match_parent"
+    <ImageView
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="@dimen/button_vertical_margin"
-        android:text="New UI"
-        android:theme="@style/Button.ColorPrimary" />
+        android:src="@drawable/icon"
+        android:padding="100dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"/>
 
-    <Button
-        android:id="@+id/button_dashboard"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="@dimen/button_vertical_margin"
-        android:text="Old UI"
-        android:theme="@style/Button.ColorPrimary" />
-
-
-</LinearLayout>
+</android.support.constraint.ConstraintLayout>

@@ -22,7 +22,7 @@
         <activity android:name=".Dashboard" />
         <activity
             android:name=".SportDetails.SportDetailActivity"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
 
         <meta-data
             android:name="android.support.PARENT_ACTIVITY"
@@ -33,7 +33,10 @@
             android:authorities="corp.demo.sportapp"
             android:exported="true" />
 
-        <activity android:name=".UserInterface"></activity>
+        <activity android:name=".UserInterface" />
+        <activity android:name=".Activity.RegisterActivity" />
+        <activity android:name=".Activity.LoginActivity" />
+
     </application>
 
 </manifest>
