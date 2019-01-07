@@ -407,7 +407,7 @@ Kemudian kita harus menambahkan Notification dengan menggunakan NotificationMana
                     @Override
                     public void onClick(View v) {
                         remove_from_favorites();
-                        Toast.makeText(getActivity(), "Sudah berhasil dihapus  !",
+                        Toast.makeText(getActivity(), "Sudah berhasil dihaps  !",
                                 Toast.LENGTH_LONG).show();
 
 
