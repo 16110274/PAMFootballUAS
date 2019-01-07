@@ -9,10 +9,12 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import org.json.JSONException;
 import org.json.JSONObject;
+import org.w3c.dom.Text;
 
 import java.io.IOException;
 
@@ -36,8 +38,12 @@ public class RegisterActivity extends AppCompatActivity {
     @BindView(R.id.etPassword)
     EditText etPassword;
     @BindView(R.id.btnRegister)
-    Button btnRegister;
+    TextView btnRegister;
+    @BindView(R.id.link_login)
+    TextView link_login;
     ProgressDialog loading;
+
+
 
     Context mContext;
     RestApi mApiService;
@@ -50,6 +56,14 @@ public class RegisterActivity extends AppCompatActivity {
         ButterKnife.bind(this);
         mContext = this;
         mApiService = RetroServer.getAPIService();
+
+
+        link_login.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(mContext, LoginActivity.class));
+            }
+        });
 
         btnRegister.setOnClickListener(new View.OnClickListener() {
             @Override

@@ -9,6 +9,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import org.json.JSONException;
@@ -37,7 +38,7 @@ public class LoginActivity extends AppCompatActivity {
     @BindView(R.id.btnLogin)
     Button btnLogin;
     @BindView(R.id.btnRegister)
-    Button btnRegister;
+    TextView btnRegister;
     ProgressDialog loading;
 
     Context mContext;

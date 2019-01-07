@@ -401,12 +401,12 @@ public class UserInterface extends AppCompatActivity implements SportAdapter.OnI
         viewPager.setCurrentItem(tab.getPosition());
         if (tab.getPosition() == 0) {
             toolbar.setBackgroundColor(ContextCompat.getColor(UserInterface.this,
-                    R.color.colorPrimary));
+                    R.color.primary));
             tabLayout.setBackgroundColor(ContextCompat.getColor(UserInterface.this,
-                    R.color.colorPrimary));
+                    R.color.primary));
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
                 getWindow().setStatusBarColor(ContextCompat.getColor(UserInterface.this,
-                        R.color.colorPrimary));
+                        R.color.primary));
 
                     if (mSortBy.equals(Dashboard.FetchSport.FAVORITES)) {
                         getSupportLoaderManager().destroyLoader(FAVORITE_MOVIES_LOADER);
@@ -416,12 +416,12 @@ public class UserInterface extends AppCompatActivity implements SportAdapter.OnI
             }
         } else {
             toolbar.setBackgroundColor(ContextCompat.getColor(UserInterface.this,
-                    R.color.colorAccent));
+                    R.color.primary));
             tabLayout.setBackgroundColor(ContextCompat.getColor(UserInterface.this,
-                    R.color.colorAccent));
+                    R.color.primary));
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
                 getWindow().setStatusBarColor(ContextCompat.getColor(UserInterface.this,
-                        R.color.colorAccent));
+                        R.color.primary));
                 mSortBy = FetchSport.FAVORITES;
                 refreshList(mSortBy);
 
