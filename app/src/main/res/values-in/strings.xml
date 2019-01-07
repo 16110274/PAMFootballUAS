@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="title_network_alert">Jaringan bemasalah</string>
+    <string name="message_network_alert">Pastikan anda sudah terhubung ke internet</string>
+    <string name="release_date_error">Tanggal Rilis</string>
+    <string name="share_trailer">Bagikan Trailer</string>
+    <string name="add_to_favorites">Tandai sebagai favorit</string>
+    <string name="remove_from_favorites">Copot dari favorit</string>
+    <string name="watch_trailer">Tonton Trailer</string>
+    <string name="favorites">Favorit</string>
+    <string name="sort_by">Sortir dengan</string>
+    <string name="now_playing">Sedang dimainkan</string>
+    <string name="action_search">Cari</string>
+    <string name="label_now_playing">Team</string>
+    <string name="label_upcoming">Mendatang</string>
+    <string name="label_favorite">Favorit</string>
+    <string name="label_share">Bagikan</string>
+    <string name="label_communicate">Menyampaikan</string>
+    <string name="label_search">cari melalui judul movie</string>
+    <string name="action_settings">Pengaturan</string>
+    <string name="share_description">Unduh sekarang! Dapatkan aplikasi terhebat untuk mendapatkan informasi film terbaru dari Anda!</string>
+    <string name="navigation_drawer_open">Buka laci navigasi</string>
+    <string name="navigation_drawer_close">Tutup laci navigasi</string>
+    <string name="openDrawer">Drawer dibuka</string>
+    <string name="closeDrawer">Drawer ditutup</string>
+    <string name="notif_desc">Kamu telah menambahkan favorite club</string>
+    <string name="notif_title">Klub favorit ditambahkan</string>
+</resources>

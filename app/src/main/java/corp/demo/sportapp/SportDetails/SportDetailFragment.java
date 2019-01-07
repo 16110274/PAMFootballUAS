@@ -383,9 +383,9 @@ public class SportDetailFragment extends Fragment implements
                                 Toast.LENGTH_LONG).show();
                         NotificationCompat.Builder builder = (NotificationCompat.Builder) new NotificationCompat.Builder(getActivity())
                                 .setSmallIcon(R.drawable.baseline_favorite_white_18dp) //ikon notification
-                                .setContentTitle("A") //judul konten
+                                .setContentTitle(getResources().getString(R.string.notif_title)) //judul konten
                                 .setAutoCancel(true)//untuk menswipe atau menghapus notification
-                                .setContentText("A"); //isi text
+                                .setContentText(getResources().getString(R.string.notif_desc)); //isi text
 
 /*
 Kemudian kita harus menambahkan Notification dengan menggunakan NotificationManager
