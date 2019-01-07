@@ -284,6 +284,7 @@ public class UserInterface extends AppCompatActivity implements SportAdapter.OnI
             case R.id.sort_premiere:
                 if (mSortBy.equals(UserInterface.FetchSport.FAVORITES)) {
                     getSupportLoaderManager().destroyLoader(FAVORITE_MOVIES_LOADER);
+                    viewPager.setCurrentItem(0);
                 }
                 mSortBy = FetchSport.PREMIERELEAGUE;
                 refreshList(mSortBy);
@@ -292,6 +293,7 @@ public class UserInterface extends AppCompatActivity implements SportAdapter.OnI
             case R.id.sort_laliga:
                 if (mSortBy.equals(UserInterface.FetchSport.FAVORITES)) {
                     getSupportLoaderManager().destroyLoader(FAVORITE_MOVIES_LOADER);
+                    viewPager.setCurrentItem(0);
                 }
                 mSortBy = FetchSport.LALIGA;
                 refreshList(mSortBy);
@@ -303,16 +305,28 @@ public class UserInterface extends AppCompatActivity implements SportAdapter.OnI
                 refreshList(mSortBy);
                 break;
             case R.id.sort_seriea:
+                if (mSortBy.equals(UserInterface.FetchSport.FAVORITES)) {
+                    getSupportLoaderManager().destroyLoader(FAVORITE_MOVIES_LOADER);
+                    viewPager.setCurrentItem(0);
+                }
                 mSortBy = UserInterface.FetchSport.SERIEA;
                 item.setChecked(true);
                 refreshList(mSortBy);
                 break;
             case R.id.sort_bundesliga:
+                if (mSortBy.equals(UserInterface.FetchSport.FAVORITES)) {
+                    getSupportLoaderManager().destroyLoader(FAVORITE_MOVIES_LOADER);
+                    viewPager.setCurrentItem(0);
+                }
                 mSortBy = FetchSport.BUNDESLIGA;
                 item.setChecked(true);
                 refreshList(mSortBy);
                 break;
             case R.id.sort_ligueone:
+                if (mSortBy.equals(UserInterface.FetchSport.FAVORITES)) {
+                    getSupportLoaderManager().destroyLoader(FAVORITE_MOVIES_LOADER);
+                    viewPager.setCurrentItem(0);
+                }
                 mSortBy = FetchSport.LIGUEONE;
                 item.setChecked(true);
                 refreshList(mSortBy);
