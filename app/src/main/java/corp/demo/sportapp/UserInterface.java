@@ -204,12 +204,14 @@ public class UserInterface extends AppCompatActivity implements SportAdapter.OnI
                 dialog.show();
             }
         }
+        viewPager.setCurrentItem(1);
     }
 
     @Override
     public void onBackPressed() {
         if (mSortBy.equals(UserInterface.FetchSport.FAVORITES)) {
             getSupportLoaderManager().destroyLoader(FAVORITE_MOVIES_LOADER);
+            viewPager.setCurrentItem(0);
         }
         mSortBy = UserInterface.FetchSport.PREMIERELEAGUE;
         refreshList(mSortBy);
@@ -399,12 +401,12 @@ public class UserInterface extends AppCompatActivity implements SportAdapter.OnI
         viewPager.setCurrentItem(tab.getPosition());
         if (tab.getPosition() == 0) {
             toolbar.setBackgroundColor(ContextCompat.getColor(UserInterface.this,
-                    R.color.primary));
+                    R.color.colorPrimary));
             tabLayout.setBackgroundColor(ContextCompat.getColor(UserInterface.this,
-                    R.color.primary));
+                    R.color.colorPrimary));
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
                 getWindow().setStatusBarColor(ContextCompat.getColor(UserInterface.this,
-                        R.color.primary));
+                        R.color.colorPrimary));
 
                     if (mSortBy.equals(Dashboard.FetchSport.FAVORITES)) {
                         getSupportLoaderManager().destroyLoader(FAVORITE_MOVIES_LOADER);
