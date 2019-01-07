@@ -26,6 +26,7 @@
                     android:id="@+id/sort_ligueone"
                     android:title="Ligue 1" />
                 <item
+                    android:visible="false"
                     android:id="@+id/sort_by_favorites"
                     android:title="@string/favorites" />
             </group>

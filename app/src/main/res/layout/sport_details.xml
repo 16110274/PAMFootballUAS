@@ -17,13 +17,14 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
+            android:orientation="vertical"
             android:paddingLeft="@dimen/details_activity_horizontal_margin"
             android:paddingRight="@dimen/details_activity_horizontal_margin">
 
             <ImageView
                 android:id="@+id/movie_poster"
                 android:layout_width="100dp"
+                android:layout_gravity="center"
                 android:layout_height="100dp"
                 android:layout_marginBottom="6dp"
                 />
@@ -34,6 +35,7 @@
                 android:orientation="vertical">
 
                 <TextView
+                    android:layout_gravity="center"
                     android:id="@+id/movie_title"
                     style="?android:attr/textAppearanceMedium"
                     android:layout_width="wrap_content"
@@ -54,6 +56,7 @@
                     android:layout_marginBottom="@dimen/button_vertical_margin"
                     android:enabled="false"
                     android:text="@string/watch_trailer"
+                    android:visibility="gone"
                     android:theme="@style/Button.ColorPrimary" />
 
 
@@ -69,6 +72,7 @@
             android:paddingRight="@dimen/details_horizontal_margin">
 
             <TextView
+                android:visibility="gone"
                 android:id="@+id/movie_user_rating"
                 style="?android:attr/textAppearanceMedium"
                 android:layout_width="wrap_content"
@@ -81,6 +85,7 @@
                 style="?android:attr/textAppearanceMedium"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:visibility="gone"
                 android:paddingLeft="@dimen/details_movie_date_vertical_padding"
                 android:textColor="@color/sport_overview_text_color"
                 android:textIsSelectable="true" />
@@ -104,6 +109,19 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/trailer_list_vertical_padding"
             tools:listitem="@layout/trailer_list_container" />
+
+        <TextView
+            style="?android:attr/textAppearanceMedium"
+            android:layout_width="wrap_content"
+            android:text="@string/label_umatch"
+            android:paddingBottom="4dp"
+            android:paddingTop="10dp"
+            android:layout_gravity="center"
+            android:layout_height="wrap_content"
+            android:paddingLeft="@dimen/details_movie_date_vertical_padding"
+            android:textColor="@color/sport_overview_text_color"
+            android:textIsSelectable="true" />
+
 
         <android.support.v7.widget.RecyclerView
             android:id="@+id/review_list"

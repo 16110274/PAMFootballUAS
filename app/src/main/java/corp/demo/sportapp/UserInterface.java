@@ -109,9 +109,8 @@ public class UserInterface extends AppCompatActivity implements SportAdapter.OnI
             @Override
             public boolean onNavigationItemSelected(MenuItem menuItem) {
                 int id = menuItem.getItemId();
-                if (id == R.id.nav_now_playing) selectTab(0);
-                if (id == R.id.nav_upcoming) selectTab(1);
-                if (id == R.id.nav_favorite) selectTab(2);
+                //if (id == R.id.nav_now_playing) selectTab(0);
+                //if (id == R.id.nav_favorite) selectTab(1);
 
 
                 //Memeriksa apakah item tersebut dalam keadaan dicek  atau tidak,
@@ -123,22 +122,8 @@ public class UserInterface extends AppCompatActivity implements SportAdapter.OnI
                 switch (menuItem.getItemId()){
                     // pilihan menu item navigasi akan menampilkan pesan toast klik kalian bisa menggantinya
                     //dengan intent activity
-                    case R.id.nav_now_playing:
-                        if (mSortBy.equals(Dashboard.FetchSport.FAVORITES)) {
-                            getSupportLoaderManager().destroyLoader(FAVORITE_MOVIES_LOADER);
-                        }
-                        mSortBy = FetchSport.PREMIERELEAGUE;
-                        refreshList(mSortBy);
-                        return true;
-                    case R.id.nav_upcoming:
-                        if (mSortBy.equals(Dashboard.FetchSport.FAVORITES)) {
-                            getSupportLoaderManager().destroyLoader(FAVORITE_MOVIES_LOADER);
-                        }
-                        mSortBy = FetchSport.SERIEA;
-                        refreshList(mSortBy);
-                        return true;
 
-                    case R.id.nav_favorite:
+                    case R.id.nav_exit:
                         if (mSortBy.equals(Dashboard.FetchSport.FAVORITES)) {
                             getSupportLoaderManager().destroyLoader(FAVORITE_MOVIES_LOADER);
                         }
@@ -220,6 +205,11 @@ public class UserInterface extends AppCompatActivity implements SportAdapter.OnI
         refreshList(mSortBy);
     }
 
+
+
+
+
+
     @Override
     protected void onStart() {
         super.onStart();
@@ -249,7 +239,9 @@ public class UserInterface extends AppCompatActivity implements SportAdapter.OnI
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
+        getMenuInflater().inflate(R.menu.main, menu);
         inflater.inflate(R.menu.dashboard, menu);
+
 
         switch (mSortBy) {
             case UserInterface.FetchSport.PREMIERELEAGUE:
@@ -410,22 +402,6 @@ public class UserInterface extends AppCompatActivity implements SportAdapter.OnI
                     mSortBy = FetchSport.PREMIERELEAGUE;
                     refreshList(mSortBy);
             }
-        } else if (tab.getPosition() == 1) {
-            toolbar.setBackgroundColor(ContextCompat.getColor(UserInterface.this,
-                    android.R.color.holo_purple));
-            tabLayout.setBackgroundColor(ContextCompat.getColor(UserInterface.this,
-                    android.R.color.holo_purple));
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-                getWindow().setStatusBarColor(ContextCompat.getColor(UserInterface.this,
-                        android.R.color.holo_purple));
-
-                if (mSortBy.equals(Dashboard.FetchSport.FAVORITES)) {
-                    getSupportLoaderManager().destroyLoader(FAVORITE_MOVIES_LOADER);
-                }
-                mSortBy = FetchSport.PREMIERELEAGUE;
-                refreshList(mSortBy);
-
-            }
         } else {
             toolbar.setBackgroundColor(ContextCompat.getColor(UserInterface.this,
                     R.color.colorAccent));
@@ -458,8 +434,7 @@ public class UserInterface extends AppCompatActivity implements SportAdapter.OnI
         tabLayout.setupWithViewPager(viewPager);
 
         tabLayout.getTabAt(0).setText(R.string.label_now_playing);
-        tabLayout.getTabAt(1).setText(R.string.label_upcoming);
-        tabLayout.getTabAt(2).setText(R.string.label_favorite);
+        tabLayout.getTabAt(1).setText(R.string.label_favorite);
         tabLayout.addOnTabSelectedListener(this);
     }
 

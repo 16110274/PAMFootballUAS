@@ -7,28 +7,13 @@
 
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <group android:checkableBehavior="single">
-        <item
-            android:id="@+id/nav_now_playing"
-            android:icon="@drawable/ic_local_activity"
-            android:title="@string/label_now_playing" />
-        <item
-            android:id="@+id/nav_upcoming"
-            android:icon="@drawable/ic_move_to_inbox"
-            android:title="@string/label_upcoming" />
-        <item
-            android:id="@+id/nav_favorite"
-            android:icon="@drawable/ic_favorite"
-            android:title="@string/label_favorite"
-            />
-    </group>
 
-    <item android:title="@string/label_communicate">
+    <item>
         <menu>
             <item
-                android:id="@+id/nav_share"
-                android:icon="@drawable/ic_share"
-                android:title="@string/label_share" />
+                android:id="@+id/nav_exit"
+                android:icon="@drawable/baseline_exit_to_app_black_18dp"
+                android:title="@string/label_exit" />
         </menu>
     </item>
 

@@ -4,7 +4,7 @@
     <string name="title_network_alert">Network Error</string>
     <string name="message_network_alert">Make sure you are connected to Internet</string>
     <string name="release_date_error">Release Date Missing</string>
-
+    <string name="label_exit">Exit</string>
     <!--Movie Details Section-->
     <string name="share_trailer">Share trailer</string>
     <string name="add_to_favorites">Mark as favorite</string>
@@ -25,6 +25,7 @@
     <string name="label_upcoming">Upcoming</string>
     <string name="label_favorite">Favorite</string>
     <string name="label_share">Share</string>
+    <string name="label_umatch">Upcoming Match</string>
 
     <string name="label_communicate">Communicate</string>
     <string name="label_search">search by movie title</string>
