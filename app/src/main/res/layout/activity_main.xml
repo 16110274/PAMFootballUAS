@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:layout_height="match_parent"
+    tools:context="corp.demo.sportapp.MainActivity">
+
+    <Button
+        android:id="@+id/button_gofragment"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/button_vertical_margin"
+        android:text="New UI"
+        android:theme="@style/Button.ColorPrimary" />
+
+    <Button
+        android:id="@+id/button_dashboard"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/button_vertical_margin"
+        android:text="Old UI"
+        android:theme="@style/Button.ColorPrimary" />
+
+
+</LinearLayout>
