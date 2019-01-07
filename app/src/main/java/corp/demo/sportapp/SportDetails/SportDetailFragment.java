@@ -379,7 +379,7 @@ public class SportDetailFragment extends Fragment implements
                     @Override
                     public void onClick(View v) {
                         mark_as_favorite();
-                        Toast.makeText(getActivity(), "Sudah berhasil di fav!",
+                        Toast.makeText(getActivity(), getResources().getString(R.string.notif_title),
                                 Toast.LENGTH_LONG).show();
                         NotificationCompat.Builder builder = (NotificationCompat.Builder) new NotificationCompat.Builder(getActivity())
                                 .setSmallIcon(R.drawable.baseline_favorite_white_18dp) //ikon notification

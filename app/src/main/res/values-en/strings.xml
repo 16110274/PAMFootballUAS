@@ -25,4 +25,6 @@
     <string name="closeDrawer">Close the drawer</string>
     <string name="notif_title">Favorite Club Added</string>
     <string name="notif_desc">You have added a favorite club</string>
+    <string name="label_exit">Exit</string>
+    <string name="label_umatch">Upcoming Match</string>
 </resources>

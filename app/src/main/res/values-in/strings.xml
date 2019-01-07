@@ -25,4 +25,6 @@
     <string name="closeDrawer">Drawer ditutup</string>
     <string name="notif_desc">Kamu telah menambahkan favorite club</string>
     <string name="notif_title">Klub favorit ditambahkan</string>
+    <string name="label_umatch">Pertandingan Mendatang</string>
+    <string name="label_exit">Keluar</string>
 </resources>

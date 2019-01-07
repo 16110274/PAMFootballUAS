@@ -25,4 +25,6 @@
     <string name="closeDrawer">Fermer le tiroir</string>
     <string name="notif_desc">Vous avez ajouté un club favori</string>
     <string name="notif_title">Club préféré ajouté</string>
+    <string name="label_exit">Sortie</string>
+    <string name="label_umatch">Match à venir</string>
 </resources>
